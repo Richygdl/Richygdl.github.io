@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="alrededor de USA"
+      content="Un recorrido a través de Estados Unidos."
+    />
+    <meta name="author" content="Ricardo Rosales" />
+    <meta name="keywords" content="Foto galería sobre USA" />
+
+    <title>Alrededor de los EEUU</title>
+
+    <link rel="shortcut icon" href="./favicon.png" />
+
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="images/around-vector.png"
+          alt="Logo Around the U.S."
+          class="header__logo"
+        />
+      </header>
+      <main class="content">
+        <section class="profile" id="profile">
+          <div class="profile__image-wrapper">
+            <img
+              src="images/avatar.png"
+              alt="Imagen de usuario"
+              class="profile__image"
+            />
+          </div>
+          <div class="profile__info">
+            <h2 class="profile__name">Jacques Cousteau</h2>
+            <p class="profile__roll">Explorador</p>
+
+            <button type="button" class="profile__edit-button">
+              <img
+                src="images/edit-button.png"
+                alt="Edit"
+                class="profile__edit-image"
+              />
+            </button>
+          </div>
+          <button type="button" class="profile__add-button">
+            <img
+              src="images/add-button.png"
+              alt="Add"
+              class="profile__add-image"
+            />
+          </button>
+        </section>
+        <section class="photo-grid" id="photo-grid"></section>
+
+        <template id="card-template">
+          <div class="photo-grid__card">
+            <img class="photo-grid__image" src="" alt="" loading="lazy" />
+            <p class="photo-grid__text"></p>
+            <img
+              class="photo-grid__trash"
+              src="images/Trash.png"
+              alt="Eliminar"
+            />
+            <span class="photo-grid__heart">♡</span>
+          </div>
+        </template>
+        <footer class="footer">© 2025 Around The U.S.</footer>
+        <!-- //popUp// -->
+
+        <dialog class="pop-up">
+          <form method="dialog">
+            <button
+              class="pop-up__button-close"
+              aria-label="Cerrar"
+              value="cancel"
+            ></button>
+          </form>
+          <div class="pop-up__content">
+            <form class="pop-up__form" novalidate>
+              <label class="pop-up__header" for="input-name"
+                >Editar perfil</label
+              >
+              <input
+                type="text"
+                id="input-name"
+                name="name"
+                class="form_input pop-up__input-name"
+                placeholder="Nombre"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span id="error-name" class="pop-up__error"></span>
+              <input
+                type="text"
+                name="about"
+                class="form_input pop-up__input-about"
+                placeholder="Acerca de mi"
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <span id="error-about" class="pop-up__error"></span>
+
+              <button type="submit" class="pop-up__button-save">Guardar</button>
+            </form>
+          </div>
+        </dialog>
+
+        <!-- PopUp cards -->
+        <dialog id="popup" class="card-popup">
+          <form method="dialog">
+            <button
+              class="card-popup__button-close"
+              aria-label="Cerrar"
+              value="cancel"
+            ></button>
+          </form>
+          <div class="card-popup__content">
+            <form class="card-popup__form" novalidate>
+              <label class="card-popup__header">Nuevo Lugar</label>
+              <input
+                type="text"
+                name="place-title"
+                class="form_input card-popup__place-title"
+                placeholder="Título"
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <span id="error-place-title" class="pop-up__error"></span>
+
+              <input
+                type="url"
+                name="img-Url"
+                class="form_input card-popup__img-Url"
+                placeholder="URL"
+                required
+              />
+              <span id="error-img-Url" class="pop-up__error"></span>
+
+              <button type="submit" class="card-popup__button-save">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </dialog>
+        <dialog class="image-popup">
+          <div class="image-popup__content">
+            <div class="image-popup__image-wrapper">
+              <img src="" alt="" class="image-popup__image" />
+              <form method="dialog">
+                <button
+                  class="image-popup__button-close"
+                  aria-label="Cerrar"
+                  value="close"
+                ></button>
+              </form>
+              <p class="image-popup__caption"></p>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog class="delete-popup">
+          <div class="delete-popup__content">
+            <h2 class="delete-popup__title">¿Estás seguro?</h2>
+            <div class="delete-popup__buttons">
+              <button
+                type="button"
+                class="delete-popup__button delete-popup__button_type_confirm"
+              >
+                Sí
+              </button>
+              <button
+                type="button"
+                class="delete-popup__button delete-popup__button_type_cancel"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog class="avatar-popup">
+          <form method="dialog">
+            <button
+              class="avatar-popup__button-close"
+              aria-label="Cerrar"
+              value="cancel"
+            ></button>
+          </form>
+          <div class="avatar-popup__content">
+            <form class="avatar-popup__form" novalidate>
+              <label class="avatar-popup__header">Cambiar foto de perfil</label>
+              <input
+                type="url"
+                name="avatar"
+                class="form_input avatar-popup__input-avatar"
+                placeholder="Enlace a la nueva foto"
+                required
+              />
+              <span id="error-avatar" class="pop-up__error"></span>
+              <button type="submit" class="avatar-popup__button-save">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </dialog>
+      </main>
+    </div>
+    <script src="./scripts/index.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+.pop-up,
+.card-popup,
+.avatar-popup {
+  position: relative; /* Agregado para que el botón se posicione relativo al dialog */
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: visible; /* Cambiado a visible para que el botón se vea fuera */
+}
+
+.pop-up:not([open]),
+.card-popup:not([open]),
+.avatar-popup:not([open]) {
+  display: none;
+}
+.pop-up__content,
+.card-popup__content,
+.avatar-popup__content {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  width: 430px;
+  max-width: 100vw;
+  height: 330px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.avatar-popup__content {
+  height: 250px !important;
+}
+.pop-up__form,
+.card-popup__form,
+.avatar-popup__form {
+  display: flex;
+  flex-direction: column;
+}
+.pop-up__header,
+.card-popup__header,
+.avatar-popup__header {
+  width: 330px;
+  margin: 36px 64px 0 32px;
+  color: black;
+  font-family: "Inter-black";
+  font-size: 24px;
+}
+.pop-up__input-name,
+.card-popup__place-title,
+.pop-up__input-about,
+.card-popup__img-Url,
+.avatar-popup__input-avatar {
+  max-width: 358px;
+  max-height: 38px;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  border-bottom: solid #545454 1px;
+  margin: 44px 36px 0 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+}
+.popup__input_type_error {
+  color: red;
+  border-bottom: solid red;
+  max-width: 358px;
+  max-height: 28px;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  margin: 54px 36px 0px 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pop-up__button-save,
+.card-popup__button-save,
+.avatar-popup__button-save {
+  background-color: black;
+  width: 358px;
+  height: 51px;
+  margin: 0 36px 0 36px;
+  font-size: 18px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+.pop-up__button-save:hover,
+.card-popup__button-save:hover,
+.avatar-popup__button-save:hover {
+  opacity: 60%;
+  color: #ffffff;
+}
+.popup__button_disabled {
+  background-color: white;
+  width: 358px;
+  height: 51px;
+  margin: 0 36px 0px 36px;
+  font-size: 18px;
+  color: rgb(140, 140, 140);
+  border-radius: 5px;
+  text-align: center;
+  opacity: 60%;
+}
+
+.pop-up__button-close,
+.card-popup__button-close,
+.avatar-popup__button-close {
+  background-image: url("../images/Close Icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  position: absolute;
+  top: -33px;
+  right: -33px;
+  height: 26px;
+  width: 26px;
+  border: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+.pop-up__button-close:hover,
+.card-popup__button-close:hover,
+.avatar-popup__button-close:hover {
+  opacity: 60%;
+}
+
+.pop-up__error,
+.popup__error_visible {
+  color: red;
+  max-width: 358px;
+  max-height: 28px;
+  font-size: 12px;
+  text-align: left;
+  border: none;
+  margin: 4px 36px 10px 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pop-up::backdrop,
+.card-popup::backdrop,
+.avatar-popup::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+@media screen and (max-width: 425px) {
+  .pop-up__content,
+  .card-popup__content,
+  .avatar-popup__content {
+    width: 282px;
+    height: 322px;
+  }
+  .pop-up__button-save,
+  .card-popup__button-save,
+  .avatar-popup__button-save {
+    width: 238px;
+    height: 46px;
+    margin: 0 auto 0 auto;
+  }
+  .pop-up__button-close,
+  .card-popup__button-close,
+  .avatar-popup__button-close {
+    top: -33px;
+    right: -33px;
+  }
+}
